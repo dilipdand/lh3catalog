@@ -52,3 +52,5 @@ gem 'foundation-rails'
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip', '~> 4.2'
 gem 'figaro'
+
+gem 'rails_12factor', group: :production
