@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="large-10 large-centered column">
+			<%= @product.name %>
+  </div>
+  <div class="large-10 large-centered column">
+	<%= @product.description %>
+  </div>
+<div class="large-10 large-centered column">
+	<%= @product.all_categories %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.all_tags %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.website %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.logo %>
+</div>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
