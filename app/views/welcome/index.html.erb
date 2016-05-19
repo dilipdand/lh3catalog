@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lighthouse3 Catalog</h1>
+
+<table>
+<% counter = 1 %>
+<% max_counter = 5 %>
+<%  @categories.in_groups_of(max_counter, false).each do |category_array| %>
+		<tr>
+		<%  category_array.each do |category| %>
+			<td><%= link_to category.name, category_products_path(id: category.id), remote: true %></td>
+		<% end %>
+		</tr>
+<% end %>
+<tr><td colspan="<%=max_counter %>"<div id="related-tags"></div></td></tr>
+<tr><td colspan="<%=max_counter %>"<div id="related-products"></div></td></tr>
+
+</table>

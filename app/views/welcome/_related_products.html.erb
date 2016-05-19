@@ -1,0 +1,5 @@
+<% @productsForCategory.each do |product| %>
+	<%= link_to product.name, product %>
+	<%= product.description %>
+	<%= product.all_tags %>
+<% end %>

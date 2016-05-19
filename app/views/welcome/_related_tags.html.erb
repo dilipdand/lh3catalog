@@ -1,0 +1,6 @@
+<% @tagsForCategory.each do |tag| %>
+	<%= tag.name %>
+	<% if @tagsForCategory.hasMore? %>
+	, 
+	<% end %>
+<% end %>
