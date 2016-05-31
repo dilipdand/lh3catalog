@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424224913) do
+ActiveRecord::Schema.define(version: 20160530223056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,13 +55,25 @@ ActiveRecord::Schema.define(version: 20160424224913) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "website"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "saas"
+    t.boolean  "agency"
+    t.boolean  "api"
+    t.string   "compensation"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "smb_price"
+    t.string   "ent_price"
+    t.boolean  "freemium"
+    t.string   "base_price"
+    t.string   "per_campaign_price"
   end
 
   create_table "tags", force: :cascade do |t|

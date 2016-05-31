@@ -60,6 +60,15 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+	Product.import(params[:file])
+	redirect_to products_url, notice: "Products imported."
+	
+  end
+  
+  def import_form
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +78,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit( :name, :description, :all_tags, :all_categories, :website, :logo)
+      params.require(:product).permit( :name, :description, :all_tags, :all_categories, :website, :logo, :saas, :agency, :api, :compensation, :city, :state, :coutnry, :smb_price, :ent_price, :freemium, :base_price, :per_campaign_price)
     end
 end

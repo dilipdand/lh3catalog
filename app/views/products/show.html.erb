@@ -28,5 +28,35 @@
 <div class="large-10 large-centered column">
 	<%= @product.logo %>
 </div>
+<div class="large-10 large-centered column">
+	<%= @product.city + ", " + @product.state + ", " + @product.country %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.saas == true ? "SAAS" : "Not SAAS" %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.agency == true ? "Agency" : "Not an Agency" %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.api == true ? "Has API" : "Does Not Have API" %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.compensation %>
+</div>
+<div class="large-10 large-centered column">
+	<%= @product.freemium == true ? "Freemium Model" : "No Freemium" %>
+</div>
+<div class="large-10 large-centered column">
+	<%= "Per Campaign Price: " + (@product.per_campaign_price == nil ? "" : @product.per_campaign_price) %>
+</div>
+<div class="large-10 large-centered column">
+	<%= "Base Price: " + (@product.base_price == nil ? "" : @product.base_price ) %>
+</div>
+<div class="large-10 large-centered column">
+	<%= "Small Business Price: " + (@product.smb_price == nil ? "" : @product.smb_price)%>
+</div>
+<div class="large-10 large-centered column">
+	<%= "Enterprise Price: " + (@product.ent_price == nil ? "" : @product.ent_price)%>
+</div>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

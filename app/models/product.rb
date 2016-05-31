@@ -9,8 +9,10 @@ has_attached_file :logo, :styles => { :small => "100x100>", :med => "200x200>", 
 validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }, :size => { :in => 0..3.megabytes }
 
 def all_tags=(names)
-  self.tags = names.split(",").map do |name|
-      Tag.where(name: name.strip).first_or_create!
+  if (names != nil)
+	  self.tags = names.split(",").map do |name|
+		  Tag.where(name: name.strip).first_or_create!
+	  end
   end
 end
 
@@ -26,4 +28,15 @@ end
 def all_categories
   self.categories.map(&:name).join(", ")
 end
+
+def self.import(file)
+	accessible_attributes = ["name","saas","agency","api","all_tags","all_categories","compensation","description","url","city","state","country","per_campaign_price","base_price","smb_price","ent_price","freemium"]
+	CSV.foreach(file.path,  :headers => true ) do |row|
+		product = self.new
+		product.attributes = row.to_hash.select{ |k, v| accessible_attributes.include? k}
+		product.save!
+	end
+end
+
+
 end
