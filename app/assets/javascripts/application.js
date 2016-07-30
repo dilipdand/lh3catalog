@@ -13,4 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap.min
 //= require_tree .
+
+$.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+});
+
+$('#filter_products').submit(function() {  
+    var valuesToSubmit = $(this).serialize();
+    $.ajax({
+        type: "GET",
+        url: "/filter_products.js", 
+		format: 'js', //sumbits it to the given url of the form
+        data: valuesToSubmit,
+        dataType: "script" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(data){
+        alert("success" + data);
+		$('#related-products').html(data);
+    });
+    return false; // prevents normal behaviour
+});

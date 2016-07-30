@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'category/:id/tags' => 'welcome#tagsForCategory', as: :category_tags
   get 'category/:id/products' => 'welcome#productsForCategory', as: :category_products
+  get 'filter_products' =>'welcome#filter_products', as: :filter_products
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

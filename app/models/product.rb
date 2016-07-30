@@ -8,6 +8,11 @@ has_many :categories, through: :product_categories
 has_attached_file :logo, :styles => { :small => "100x100>", :med => "200x200>", :large => "514x386>" }, :default_url => ":style/fallback-product-img.png"
 validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }, :size => { :in => 0..3.megabytes }
 
+scope :has_saas,  -> { where(saas: true)     }
+scope :has_api,   -> { where(api: true)      }
+scope :is_agency, -> { where(agency: true)   }
+scope :is_free,   -> { where(freemium: true) }
+
 def all_tags=(names)
   if (names != nil)
 	  self.tags = names.split(",").map do |name|

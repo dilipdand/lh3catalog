@@ -1,18 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Lighthouse3 Catalog</h1>
-
-<table>
-<% counter = 1 %>
+<div id="products" class="col-xs-12">
+	<%= form_tag filter_products_path(format: :js), :method => :get, remote: true, authenticity_token: true, id: 'filter_products'	do %>
+	<% counter = 1 %>
 <% max_counter = 5 %>
-<%  @categories.in_groups_of(max_counter, false).each do |category_array| %>
-		<tr>
-		<%  category_array.each do |category| %>
-			<td><%= link_to category.name, category_products_path(id: category.id), remote: true %></td>
-		<% end %>
-		</tr>
+<div class="col-xs-2"></div>
+<div class="col-xs-10">
+	<div class="btn-group" data-toggle="buttons">
+	<%= collection_check_boxes(:category, :selected_category_ids, Category.all, :id, :name, ) do |b| %>
+	<%= b.label(class: "btn btn-primary") {b.check_box({:onchange => 'this.form.submit();'}) + b.text}  %>
+	<% end %>
+	</div>
+</div>
+<div class="col-xs-2"></div>
+<div class="col-xs-10" id="related-tags"></div>
+<div class="col-xs-2"><%= render "filter_criteria"%></div>
 <% end %>
-<tr><td colspan="<%=max_counter %>"<div id="related-tags"></div></td></tr>
-<tr><td colspan="<%=max_counter %>"<div id="related-products"></div></td></tr>
-
-</table>
+<div id="related-products" class="col-xs-10"></div>
+</div>

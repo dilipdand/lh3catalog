@@ -1,13 +1,7 @@
-body {
+body, div, p, ol, ul, td, span  {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: Trebuchet, Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -19,7 +13,7 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #333;
 
   &:visited {
     color: #666;
@@ -69,5 +63,160 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+  }
+}
+
+.onoffswitch {
+  position: relative;
+  width: 50px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  width: 60px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #999999;
+  border-radius: 20px;
+}
+
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+  &:before, &:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 20px;
+    padding: 0;
+    line-height: 20px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+  &:before {
+    content: "YES";
+    padding-left: 10px;
+    background-color: #F08913;
+    color: #FFFFFF;
+  }
+  &:after {
+    content: "NO";
+    padding-right: 10px;
+    background-color: #999999;
+    color: #FFFFFF;
+    text-align: right;
+  }
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+  .onoffswitch-inner {
+    margin-left: 0;
+  }
+  .onoffswitch-switch {
+    right: 0px;
+  }
+}
+
+.filter-button {
+  display: block;
+  width: 60px;
+     height: 30px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+   border: 2px solid #999999;
+  border-radius: 20px;
+    background-color: #666666;
+
+}
+
+#products {
+	display: block;
+	width: 100%;
+    font-family: Trebuchet, Arial, sans-serif;
+}
+
+#products table, tr {
+	padding: 0px;
+}
+
+#products td {
+	width: 20%;
+	padding: 5px;
+	align: center;
+}
+
+.categories {
+  position: relative;
+  width: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.categories-checkbox {
+  display: none;
+}
+
+.categories-label {
+  display: block;
+  width: 60px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #999999;
+  border-radius: 20px;
+}
+
+.categories-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+  &:before, &:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 20px;
+    padding: 0;
+    line-height: 20px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+  &:before {
+    padding-left: 10px;
+    background-color: #F08913;
+    color: #FFFFFF;
+  }
+  &:after {
+    padding-right: 10px;
+    background-color: #999999;
+    color: #FFFFFF;
+    text-align: right;
+  }
+}
+
+.categories-checkbox:checked + .categories-label {
+  .categories-inner {
+    margin-left: 0;
+  }
+  .categories-switch {
+    right: 0px;
   }
 }

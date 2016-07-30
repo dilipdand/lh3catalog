@@ -1,9 +1,7 @@
 <% @productsForCategory.each do |product| %>
-	<tr>
-	<td>
+	<div>
 	<%= link_to product.name, product %><br/>
 	<%= product.description %><br/>
 	<%= product.all_tags %>
-	</td>
-	</tr>
+	</div>
 <% end %>
