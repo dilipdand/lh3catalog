@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Lighthouse3 Catalog</h1>
-
-<table>
-<% counter = 1 %>
+<div id="products" class="col-xs-12">
+	<%= form_tag filter_products_path(format: :js), :method => :get, remote: true, authenticity_token: true, id: 'filter_products'	do %>
+	<% counter = 1 %>
 <% max_counter = 5 %>
-<%  @categories.in_groups_of(max_counter, false).each do |category_array| %>
-		<tr>
-		<%  category_array.each do |category| %>
-			<td><%= link_to category.name, category_products_path(id: category.id), remote: true %></td>
-		<% end %>
-		</tr>
+<div class="col-xs-2"></div>
+<div class="col-xs-10">
+	<%= hidden_field_tag "categories_ids" %>
+	<div class="btn-group" data-toggle="buttons">
+	<%= button_tag "All", class: "btn btn-warning", onclick: '$("#categories_ids").val("All"); $("#filter_products").submit();' %>
+	<% Category.all.each do |c| %>
+		<%= button_tag c.name, class: "btn btn-warning", onclick: '$("#categories_ids").val("' + c.id.to_s + '"); $("#filter_products").submit();' %>
+	<% end %>
+	</div>
+</div>
+<div class="col-xs-2"></div>
+<div class="col-xs-10" id="related-tags" data-no-turbolink></div>
+<div class="col-xs-2"><%= render "filter_criteria"%></div>
 <% end %>
-<tr><td colspan="<%=max_counter %>"<div id="related-tags"></div></td></tr>
-<tr><td colspan="<%=max_counter %>"<div id="related-products"></div></td></tr>
-
-</table>
+<div id="related-products" class="col-xs-10"></div>
+</div>

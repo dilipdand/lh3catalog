@@ -1,9 +1,6 @@
 <% @productsForCategory.each do |product| %>
-	<tr>
-	<td>
+	<div>
+	<%- image_tag product.logo.url(:square) %>
 	<%= link_to product.name, product %><br/>
-	<%= product.description %><br/>
-	<%= product.all_tags %>
-	</td>
-	</tr>
+	</div>
 <% end %>

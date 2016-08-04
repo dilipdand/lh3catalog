@@ -1,0 +1,25 @@
+	<div id="filters" class="btn-group-vertical" data-toggle="buttons">
+	
+		<%= button_tag "Reset All Filters", id: "resetFilter", type: "reset", class: "btn btn-info-outline", onclick: 'resetFilters();'  %>
+
+		<label class="btn btn-primary" for="filters">
+			<%= check_box_tag "filters[]", "saas" %>SAAS (Self Service)
+		</label>
+
+		<label class="btn btn-primary" for="filters"> 
+		<input type="checkbox" name="filters[]" value="agency" id="agency"> Agency 
+		</label>
+
+		<label class="btn btn-primary" for="filters">
+			<input type="checkbox" name="filters[]" value="freemium" id="freemium" >Freemium
+		</label>
+
+		<label class="btn btn-primary" for="filters">
+			<input type="checkbox" name="filters[]" value="api" id="api" >Has API
+		</label>
+		
+		<input type="hidden" name="filters[]" value="" />
+		<%= submit_tag 'Filter', class: 'btn', onclick: '$("#filter_products").submit();'%>
+
+
+	</div>
