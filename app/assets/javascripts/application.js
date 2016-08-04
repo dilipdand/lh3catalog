@@ -16,21 +16,30 @@
 //= require bootstrap.min
 //= require_tree .
 
-$.ajaxSetup({
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-});
+
 
 $('#filter_products').submit(function() {  
     var valuesToSubmit = $(this).serialize();
+
     $.ajax({
         type: "GET",
-        url: "/filter_products.js", 
-		format: 'js', //sumbits it to the given url of the form
+        url: "/filter_products.js", //sumbits it to the given url of the form
+		format: 'js', 
+		cache: false,
         data: valuesToSubmit,
         dataType: "script" // you want a difference between normal and ajax-calls, and json is standard
     }).success(function(data){
-        alert("success" + data);
-		$('#related-products').html(data);
+        console.log("success" + data);
     });
     return false; // prevents normal behaviour
 });
+
+ function resetFilters() {	
+  $('#filters').prop('checked', false);
+  $('#filters').find('label').removeClass('active');
+  $('#filters').find('input:hidden').val([]);
+  alert($('#filters').find('input:hidden').value);
+  $("#categories_ids").val("");
+  $("#related-products").html("");
+  };
+

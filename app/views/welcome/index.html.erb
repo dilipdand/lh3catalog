@@ -7,14 +7,16 @@
 <% max_counter = 5 %>
 <div class="col-xs-2"></div>
 <div class="col-xs-10">
+	<%= hidden_field_tag "categories_ids" %>
 	<div class="btn-group" data-toggle="buttons">
-	<%= collection_check_boxes(:category, :selected_category_ids, Category.all, :id, :name, ) do |b| %>
-	<%= b.label(class: "btn btn-primary") {b.check_box({:onchange => 'this.form.submit();'}) + b.text}  %>
+	<%= button_tag "All", class: "btn btn-warning", onclick: '$("#categories_ids").val("All"); $("#filter_products").submit();' %>
+	<% Category.all.each do |c| %>
+		<%= button_tag c.name, class: "btn btn-warning", onclick: '$("#categories_ids").val("' + c.id.to_s + '"); $("#filter_products").submit();' %>
 	<% end %>
 	</div>
 </div>
 <div class="col-xs-2"></div>
-<div class="col-xs-10" id="related-tags"></div>
+<div class="col-xs-10" id="related-tags" data-no-turbolink></div>
 <div class="col-xs-2"><%= render "filter_criteria"%></div>
 <% end %>
 <div id="related-products" class="col-xs-10"></div>
